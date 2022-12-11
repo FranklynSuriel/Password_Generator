@@ -3,13 +3,14 @@ var lowerChr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 var upperChr = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var numbersChr = [0,1,2,3,4,5,6,7,8,9]
 var specialChr = ["!","@","#","$","%","^","&","*","(",")","_","-","+","/"];
-var result = [];
-var generateBtn = document.querySelector("#generate");
-var count = 0
-var allChr = []
+
 
 
 function generatePassword(){
+  var result = [];
+
+  var count = 0
+  var allChr = []
   var passwordLength = window.prompt(" Enter password lenght (Between 8 and 128 Characters): ");
   console.log(passwordLength);
 
@@ -51,7 +52,7 @@ function generatePassword(){
     result = result.concat(upper);
   }
 
-  if (numbersChr) {
+  if (numbers) {
     for (i = 0; i < 1; i = i + 1) {
       var index = Math.floor(Math.random() * numbersChr.length);
       num = num.concat(numbersChr[index]);
@@ -61,7 +62,7 @@ function generatePassword(){
     result = result.concat(num);
   }
 
-  if (specialChr) {
+  if (special) {
     for (i = 0; i < 1; i = i + 1) {
       var index = Math.floor(Math.random() * specialChr.length);
       specials = specials.concat(specialChr[index]);
@@ -72,14 +73,25 @@ function generatePassword(){
     result = result.concat(specials);
   }
 
-  console.log(count);
-  console.log(result);
-  console.log(allChr);
-  result.sort();
+  if (result.length <= passwordLength) {
+    for (i = count; i <= passwordLength; i++){
+      var index = Math.floor(Math.random() * allChr.length);
+      result = result.concat(allChr[index]);
+      console.log(result);
+
+    }
+  }
+
+  // console.log(count);
+  // console.log(result);
+  // console.log(allChr);
+
+  // result.sort();
   return(result.join(""));
 
 }
 
+var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -90,4 +102,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword());
+generateBtn.addEventListener("click", writePassword);
