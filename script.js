@@ -20,7 +20,7 @@ function generatePassword(){
     var numbers = window.confirm("Do you want to include numbers?");
     var special = window.confirm("Do you want to include special characters?");
   } else if (!passwordLength) {
-    return;
+    return result;
   }else {
     window.alert(" You need to choose a password between 8 to 128 characters");
     generatePassword();
@@ -73,8 +73,8 @@ function generatePassword(){
     result = result.concat(specials);
   }
 
-  if (result.length <= passwordLength) {
-    for (i = count; i <= passwordLength; i++){
+  if (result.length < passwordLength) {
+    for (i = count; i < passwordLength; i++){
       var index = Math.floor(Math.random() * allChr.length);
       result = result.concat(allChr[index]);
       console.log(result);
