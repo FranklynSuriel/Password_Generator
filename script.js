@@ -32,11 +32,11 @@ function generatePassword(){
 
   } else if (!passwordLength) {
     //if password length is false then return the value of result, at this point is empty.
-    return result;
+    return passwordResult;
   }else {
     // if password length is less than 8 or more than 128 alert the user and call the function again.
     window.alert(" You need to choose a password between 8 to 128 characters");
-    generatePassword();
+    
   }
   
   // Create this function to validate the criteria for the password.
